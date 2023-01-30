@@ -1,6 +1,8 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.sql.SQLOutput;
+
 public class App {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
@@ -8,5 +10,23 @@ public class App {
         HelloWorld bean =
                 (HelloWorld) applicationContext.getBean("helloworld");
         System.out.println(bean.getMessage());
+
+        Cat bean2 = (Cat) applicationContext.getBean("cat");
+        System.out.println(bean2.getName());
+
+        HelloWorld beanClone =
+                (HelloWorld) applicationContext.getBean("helloworld");
+        System.out.println(bean.getMessage());
+
+        Cat bean2Clone = (Cat) applicationContext.getBean("cat");
+        System.out.println(bean2.getName());
+
+        System.out.println(bean==beanClone);
+        System.out.println(bean2==bean2Clone);
+
+        System.out.println(bean);
+        System.out.println(beanClone);
+        System.out.println(bean2);
+        System.out.println(bean2Clone);
     }
 }
